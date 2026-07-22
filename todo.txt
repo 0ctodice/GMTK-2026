@@ -5,12 +5,12 @@
     - créer l'objet de base (Collision + Visual)
     - Gestion de la navigation
     - Frame d'invincibilté
-- Spawn aléatoire des ennemis
+- Spawn aléatoire des ennemis : DONE
     - choisir un nombre d'ennemis
     - choisir un nombre de Spawn
     - choisir un les position des Spawns
-    
-- Gestion des vagues
+
+- Gestion des vagues : DONE
 
 - Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
 - Gestion de la vie
