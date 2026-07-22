@@ -1,13 +1,25 @@
 [gd_scene format=3 uid="uid://ci3smpy3bgtyl"]
 
 [ext_resource type="PackedScene" uid="uid://dgil5o3d8ni15" path="res://Scene/player.tscn" id="1_emx41"]
+[ext_resource type="PackedScene" uid="uid://hfohyucspmmc" path="res://Scene/base_enemy.tscn" id="2_dlwip"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_emx41"]
+vertices = PackedVector2Array(294, 158, 26, 158, 26, 26, 294, 26)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, 16, 304, 16, 304, 168, 16, 168)])
 
 [node name="World" type="Node2D" unique_id=631941428]
 
-[node name="Player" parent="." unique_id=370329021 instance=ExtResource("1_emx41")]
-position = Vector2(128, 120)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1698914814]
+navigation_polygon = SubResource("NavigationPolygon_emx41")
 
 [node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=901506894]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" unique_id=225221042]
 polygon = PackedVector2Array(8, 176, 312, 176, 312, 8, 8, 8, 8, 184, -8, 184, -24, -16, 192, -16, 384, 0, 352, 144, 344, 224, 256, 248, 8, 184)
+
+[node name="Player" parent="." unique_id=370329021 instance=ExtResource("1_emx41")]
+position = Vector2(128, 120)
+
+[node name="BaseEnemy" parent="." unique_id=374939552 instance=ExtResource("2_dlwip")]
+position = Vector2(240, 64)

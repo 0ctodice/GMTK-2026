@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var SPEED: float = 150.0
 @export var ACCELERATION: float = 2.0
@@ -23,7 +24,6 @@ func _ready():
 	dash_cooldown.timeout.connect(func(): can_dash = true)
 
 func _physics_process(delta):
-	print(can_dash)
 	if not dashing:
 		last_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		velocity = lerp(velocity, last_direction * SPEED, delta * (FRICTION if last_direction == Vector2.ZERO else ACCELERATION))

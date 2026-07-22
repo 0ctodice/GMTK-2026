@@ -1,6 +1,9 @@
 1. Programmation :
 
-- Deplacement + Dash
+- Deplacement + Dash : DONE
+- Ennemis
+    - créer l'objet de base (Collision + Visual)
+    - Gestion de la navigation
 - Spawn aléatoire des ennemis
 - Gestion des vagues et des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
 - Frame d'invincibilté
