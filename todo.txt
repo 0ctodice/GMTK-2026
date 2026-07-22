@@ -6,6 +6,10 @@
     - Gestion de la navigation
     - Frame d'invincibilté
 - Spawn aléatoire des ennemis
+    - choisir un nombre d'ennemis
+    - choisir un nombre de Spawn
+    - choisir un les position des Spawns
+    
 - Gestion des vagues
 
 - Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)

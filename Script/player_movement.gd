@@ -45,7 +45,6 @@ func _input(_event):
 
 func _on_hurt_box_body_entered(body: Node2D):
 	var enemy_direction = (body as Enemy).get_last_direction()
-	print(enemy_direction)
 	hurt_box_collision_shape.set_deferred("disabled", true)
 	hurt_box_timer.start()
 	velocity = (velocity + enemy_direction).normalized() * DASH_FACTOR * SPEED

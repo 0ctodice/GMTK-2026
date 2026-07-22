@@ -23,3 +23,4 @@ shape = SubResource("RectangleShape2D_eae6q")
 path_desired_distance = 16.0
 target_desired_distance = 16.0
 avoidance_enabled = true
+neighbor_distance = 20.0
