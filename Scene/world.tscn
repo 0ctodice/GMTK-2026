@@ -19,7 +19,10 @@ navigation_polygon = SubResource("NavigationPolygon_emx41")
 polygon = PackedVector2Array(8, 176, 312, 176, 312, 8, 8, 8, 8, 184, -8, 184, -24, -16, 192, -16, 384, 0, 352, 144, 344, 224, 256, 248, 8, 184)
 
 [node name="Player" parent="." unique_id=370329021 instance=ExtResource("1_emx41")]
-position = Vector2(128, 120)
+position = Vector2(160, 88)
 
 [node name="BaseEnemy" parent="." unique_id=374939552 instance=ExtResource("2_dlwip")]
-position = Vector2(240, 64)
+position = Vector2(256, 88)
+
+[node name="BaseEnemy2" parent="." unique_id=1294570825 instance=ExtResource("2_dlwip")]
+position = Vector2(64, 88)
