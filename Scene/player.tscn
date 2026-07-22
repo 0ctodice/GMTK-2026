@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8w33"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
+size = Vector2(16, 16)
+
 [node name="Player" type="CharacterBody2D" unique_id=370329021]
 collision_layer = 2
 script = ExtResource("1_y8w33")
@@ -23,3 +26,10 @@ shape = SubResource("RectangleShape2D_y8w33")
 wait_time = 0.2
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=2144589793]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1323991083]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1562252644]
+shape = SubResource("RectangleShape2D_eae6q")

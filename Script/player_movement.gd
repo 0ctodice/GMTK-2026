@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var dashing_time: Timer = $DashingTime
+@onready var hurt_box_collision_shape: CollisionShape2D = $HurtBox/CollisionShape2D
 
 var dashing: bool = false
 var can_dash: bool = true
@@ -15,6 +16,7 @@ var last_direction: Vector2 = Vector2.ZERO
 func _ready():
 	dashing_time.timeout.connect(func():
 		dashing = false
+		hurt_box_collision_shape.disabled = false
 		dashing_time.stop()
 		dash_cooldown.start()
 	)
@@ -34,4 +36,5 @@ func _input(_event):
 	if can_dash and Input.is_action_just_pressed("dash"):
 		dashing = true
 		can_dash = false
+		hurt_box_collision_shape.disabled = true
 		dashing_time.start()
