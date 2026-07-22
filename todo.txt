@@ -1,0 +1,27 @@
+1. Programmation :
+
+- Deplacement + Dash
+- Spawn aléatoire des ennemis
+- Gestion des vagues et des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
+- Frame d'invincibilté
+- shop
+    - Level en pause
+    - Choix aléatoire des perks
+    - Gestion du roaster
+- Menu
+    - Lancement du Jeux
+    - Options
+    - Pause/Resume
+
+2. Visuel :
+
+3. Sound Design :
+
+Fiche technique des perks :
+- Nom
+- Description
+- Visuel
+- FX
+- function "action"
+- Timer
+- Cooldown

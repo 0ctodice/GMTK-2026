@@ -1,0 +1,46 @@
+Theme : 
+- Countdown
+
+Idea :
+- Le joueur possède X vie, chaque mort lui permet d'accéder au shop et d'obtenir de nouveaux perks
+(chaque mort le rends plus fort, mais le rapproche de l'inévitable) [Arcade / Arena shooter]
+
+- Quand le joueur meurt, le level se met en pause et quand il revient, le niveau reste comme il était avant sa mort
+
+- Pas de prix à payer pour le choix d'un perk MAIS le reroll prends une vie au joueur
+
+- 1 perk gratos au commencement
+
+- Perk passif (le sort se lance toute les X temps)
+
+- Le joueur a un chrono pour se décider dans le shop, sinon il repart sans perk (HORRIBLE)
+
+- Niveau de proba différent par perks ?
+
+- Nombre de slots ?
+
+- Perks sont améliorable ou bien les différents de puissance d'un perk peuvent exister dans le même roaster ?
+
+- thème (DA) : Mythologie Egyptienne
+
+=======================================================================================================
+BrainSto :
+
+- Timer avant de pouvoir faire une action
+- Un nombre d'actions possible par cooldown (Transistor like)
+- Un nombre d'actions possible qui diminue par niveau
+- 
+- 1 2 3 Soleil
+- Désamorcer quelque-chose comme une bombe
+- Jeux de rythme
+
+Count :
+
+- 
+
+Down :
+
+- Aller vers le bas
+- ramper
+- Descendre d'un immeuble
+- Ascenceur

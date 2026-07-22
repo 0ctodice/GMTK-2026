@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dgil5o3d8ni15"]
+
+[ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://icon.svg" id="1_kelma"]
+[ext_resource type="Script" uid="uid://83mdlhkjhvm" path="res://Script/player_movement.gd" id="1_y8w33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8w33"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D" unique_id=370329021]
+collision_layer = 2
+script = ExtResource("1_y8w33")
+SPEED = 250.0
+ACCELERATION = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1241029480]
+scale = Vector2(0.12499999, 0.12499999)
+texture = ExtResource("1_kelma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763975835]
+shape = SubResource("RectangleShape2D_y8w33")
+
+[node name="DashingTime" type="Timer" parent="." unique_id=199409826]
+wait_time = 0.2
+
+[node name="DashCooldown" type="Timer" parent="." unique_id=2144589793]
