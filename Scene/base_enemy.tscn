@@ -6,9 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_et6ny"]
-size = Vector2(16, 16)
-
 [node name="BaseEnemy" type="RigidBody2D" unique_id=374939552]
 collision_layer = 8
 gravity_scale = 0.0
@@ -21,10 +18,5 @@ texture = ExtResource("1_l0v1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420821795]
 shape = SubResource("RectangleShape2D_eae6q")
-
-[node name="HitBox" type="Area2D" parent="." unique_id=367187891]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=912082005]
-shape = SubResource("RectangleShape2D_et6ny")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=900112541]

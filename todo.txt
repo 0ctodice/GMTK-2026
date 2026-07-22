@@ -1,12 +1,19 @@
 1. Programmation :
 
 - Deplacement + Dash : DONE
-- Ennemis
+- Ennemis: DONE
     - créer l'objet de base (Collision + Visual)
     - Gestion de la navigation
+    - Frame d'invincibilté
 - Spawn aléatoire des ennemis
-- Gestion des vagues et des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
-- Frame d'invincibilté
+- Gestion des vagues
+
+- Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
+- Gestion de la vie
+    - avoir une barre de santé
+    - prendre des dégats
+    - fausse mort => lancement du shop
+    - perte d'une vie
 - shop
     - Level en pause
     - Choix aléatoire des perks
@@ -15,6 +22,7 @@
     - Lancement du Jeux
     - Options
     - Pause/Resume
+    - Ecran de mort total
 
 2. Visuel :
 
