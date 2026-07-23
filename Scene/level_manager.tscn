@@ -8,4 +8,3 @@ script = ExtResource("1_5n28g")
 spawn_scene = ExtResource("2_ostif")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1490959029]
-autostart = true

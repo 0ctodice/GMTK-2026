@@ -31,6 +31,8 @@ func _spawn_enemies():
 			enemy_instance.global_position = global_position
 			get_parent().add_child(enemy_instance)
 
+		EventBus.enemies_spawned.emit(spawn_number)
+
 	if tween:
 		tween.kill()
 

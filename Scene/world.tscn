@@ -43,10 +43,18 @@ position = Vector2(160, 287)
 
 [node name="LevelManager" parent="." unique_id=1444721510 instance=ExtResource("1_dlwip")]
 
+[node name="TopLeft" type="Node2D" parent="LevelManager" unique_id=1869619658]
+position = Vector2(32, 32)
+
+[node name="BottomRight" type="Node2D" parent="LevelManager" unique_id=1426001404]
+position = Vector2(288, 256)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=800454323]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_pcvp0")
 
 [node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=901506894]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" unique_id=225221042]
 position = Vector2(0, 6)

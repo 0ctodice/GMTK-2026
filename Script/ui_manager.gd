@@ -11,7 +11,7 @@ extends Control
 
 var tween: Tween
 
-var strive_remaining: int = 1
+var strive_remaining: int = 6
 
 enum STATES {
 	IN_GAME,

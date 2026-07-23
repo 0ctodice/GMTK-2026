@@ -23,8 +23,8 @@ EventBus="*uid://5mjthvwc7ai7"
 
 window/size/viewport_width=320
 window/size/viewport_height=320
-window/size/window_width_override=960
-window/size/window_height_override=960
+window/size/window_width_override=640
+window/size/window_height_override=640
 window/stretch/mode="canvas_items"
 
 [global_group]

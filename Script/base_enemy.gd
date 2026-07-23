@@ -49,3 +49,8 @@ func resume():
 
 	tween_resume = create_tween()
 	tween_resume.tween_method(func(value: bool): can_move = value, false, true, 1)
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_key_pressed(KEY_T):
+		EventBus.enemy_died.emit()
+		queue_free()
