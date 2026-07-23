@@ -26,8 +26,8 @@ func _create_spawners():
 		var spawner_number: int = rng.randi_range(1, 3)
 
 		for i in range(spawner_number):
-			var rand_x = rng.randf_range(enemy_sprite_size.x, screen_size.x - enemy_sprite_size.x)
-			var rand_y = rng.randf_range(enemy_sprite_size.y, screen_size.y - enemy_sprite_size.y)
+			var rand_x = rng.randf_range(enemy_sprite_size.x, screen_size.x - enemy_sprite_size.x - 32)
+			var rand_y = rng.randf_range(enemy_sprite_size.y, screen_size.y - enemy_sprite_size.y - 32)
 			
 			var spawn_instance = spawn_scene.instantiate()
 			spawn_instance.global_position = Vector2(rand_x, rand_y)

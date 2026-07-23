@@ -7,7 +7,14 @@ extends Control
 var tween: Tween
 
 var strive_remaining: int = 9
-var player_died: bool = false
+
+enum STATES {
+	IN_GAME,
+	IN_SHOP,
+	IN_GAME_OVER
+}
+
+var state: STATES = STATES.IN_GAME
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +27,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func transition_to_ui():
-	player_died = true
 	strive_remaining -= 1
 	if tween: tween.kill()
 
@@ -32,20 +38,22 @@ func transition_to_ui():
 	tween.chain().tween_property(strive, "text", str(strive_remaining), 0.5)
 	tween.chain().tween_property(strive, "text", str(strive_remaining), 0.5)
 	tween.chain().tween_property(remaining, "modulate", Color.WHITE, 0.25)
-	tween.finished.connect(func(): strive.text = str(strive_remaining))
-
-	if strive_remaining > 0:
-		transition_to_shop()
-	else:
-		transition_to_game_over()
+	tween.finished.connect(func():
+		strive.text = str(strive_remaining)
+		if strive_remaining > 0:
+			transition_to_shop()
+		else:
+			transition_to_game_over()
+	)
 
 func transition_to_shop():
-	pass
+	state = STATES.IN_SHOP
 
 func transition_to_game_over():
-	pass
+	state = STATES.IN_GAME_OVER
 
 func transition_to_game():
+	state = STATES.IN_GAME
 	if tween: tween.kill()
 
 	tween = create_tween()
@@ -55,7 +63,5 @@ func transition_to_game():
 	tween.parallel().tween_property(remaining, "modulate", Color.TRANSPARENT, 0.25)
 	tween.finished.connect(EventBus.player_revived.emit)
 
-	player_died = false
-
 func _input(_event):
-	if player_died and Input.is_action_just_pressed("dash"): transition_to_game()
+	if state != STATES.IN_GAME and Input.is_action_just_pressed("dash"): transition_to_game()
