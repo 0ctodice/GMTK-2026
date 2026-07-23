@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://copfvkcl5x44x" path="res://Scene/level_manager.tscn" id="1_dlwip"]
 [ext_resource type="PackedScene" uid="uid://dgil5o3d8ni15" path="res://Scene/player.tscn" id="1_emx41"]
+[ext_resource type="Script" uid="uid://c7ymkkyy8fyu4" path="res://Script/camera_manager.gd" id="3_ejll3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_emx41"]
 vertices = PackedVector2Array(294, 158, 26, 158, 26, 26, 294, 26)
@@ -25,3 +26,5 @@ position = Vector2(144, 96)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1646712817]
 offset = Vector2(160, 90)
+script = ExtResource("3_ejll3")
+strength = 1.0

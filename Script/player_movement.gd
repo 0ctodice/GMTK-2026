@@ -62,9 +62,10 @@ func take_damage(bounce_direction: Vector2):
 	hurt_box_collision_shape.disabled = true
 	velocity = bounce_direction * SPEED * DASH_FACTOR / 2
 	current_health -= 1
+	EventBus.screen_shake.emit()
 	if current_health == 0:
 		EventBus.player_died.emit()
-	else:
+	elif current_health > 0:
 		if tween:
 			tween.kill()
 		
