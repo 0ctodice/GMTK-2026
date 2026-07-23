@@ -51,7 +51,7 @@ navigation_polygon = SubResource("NavigationPolygon_pcvp0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" unique_id=225221042]
 position = Vector2(0, 6)
-polygon = PackedVector2Array(20, 262, 300, 262, 300, 12, 20, 12, 20, 321, -20, 321, -24, -16, 192, -16, 384, 0, 352, 144, 364, 345, 292, 377, 20, 321)
+polygon = PackedVector2Array(22, 260, 296, 260, 296, 14, 22, 14, 22, 321, -20, 321, -24, -16, 192, -16, 384, 0, 352, 144, 364, 345, 292, 377, 22, 321)
 
 [node name="Player" parent="." unique_id=370329021 instance=ExtResource("1_emx41")]
 position = Vector2(160, 200)

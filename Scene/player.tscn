@@ -27,6 +27,13 @@ lifetime = 0.25
 gravity = Vector2(0, 0)
 scale_amount_curve = SubResource("Curve_y8w33")
 
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1926584562]
+position = Vector2(2, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xa75v")
+region_enabled = true
+region_rect = Rect2(36, 0, 36, 32)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1241029480]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_xa75v")
