@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dgil5o3d8ni15" path="res://Scene/player.tscn" id="1_emx41"]
 [ext_resource type="Texture2D" uid="uid://b3hyige6pgfg1" path="res://Asset/level.png" id="1_pcvp0"]
 [ext_resource type="Script" uid="uid://c7ymkkyy8fyu4" path="res://Script/camera_manager.gd" id="3_ejll3"]
+[ext_resource type="PackedScene" uid="uid://dk6ehqau60a2a" path="res://Scene/door.tscn" id="4_ol2hl"]
 [ext_resource type="Script" uid="uid://bfjcvv2v5o2iv" path="res://Script/ui_manager.gd" id="4_scul4"]
 [ext_resource type="PackedScene" uid="uid://bvwmtr2n0bkcm" path="res://Scene/ankh_points.tscn" id="6_37axr"]
 
@@ -49,12 +50,13 @@ position = Vector2(32, 32)
 [node name="BottomRight" type="Node2D" parent="LevelManager" unique_id=1426001404]
 position = Vector2(288, 256)
 
+[node name="Door" parent="LevelManager" unique_id=777700142 instance=ExtResource("4_ol2hl")]
+position = Vector2(160, 160)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=800454323]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_pcvp0")
 
 [node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=901506894]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" unique_id=225221042]
 position = Vector2(0, 6)

@@ -8,7 +8,7 @@ var tween: Tween
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.took_damage.connect(shake)
-
+	EventBus.screen_shake.connect(shake)
 
 func shake():
 	var base_offset: Vector2 = offset

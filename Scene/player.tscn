@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://icon.svg" id="1_kelma"]
 [ext_resource type="Script" uid="uid://83mdlhkjhvm" path="res://Script/player_movement.gd" id="1_y8w33"]
+[ext_resource type="Texture2D" uid="uid://bs03ybegtjcds" path="res://Asset/smoke.png" id="2_xa75v"]
 
 [sub_resource type="Curve" id="Curve_y8w33"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -21,10 +22,9 @@ ACCELERATION = 10.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1034996308]
 amount = 1
+texture = ExtResource("2_xa75v")
 lifetime = 0.25
 gravity = Vector2(0, 0)
-scale_amount_min = 5.0
-scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_y8w33")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1241029480]
