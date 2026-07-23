@@ -55,6 +55,8 @@ func _physics_process(delta):
 		velocity = lerp(velocity, last_direction * SPEED, delta * (FRICTION if last_direction == Vector2.ZERO else ACCELERATION))
 	else:
 		velocity = lerp(velocity, last_direction * SPEED * DASH_FACTOR, delta * ACCELERATION * DASH_FACTOR)
+
+	visual.flip_h = velocity.x < 0
 	
 	move_and_slide()
 

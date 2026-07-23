@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dgil5o3d8ni15"]
 
-[ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://icon.svg" id="1_kelma"]
 [ext_resource type="Script" uid="uid://83mdlhkjhvm" path="res://Script/player_movement.gd" id="1_y8w33"]
 [ext_resource type="Texture2D" uid="uid://bs03ybegtjcds" path="res://Asset/smoke.png" id="2_xa75v"]
+[ext_resource type="Texture2D" uid="uid://dsc5g240hy0pa" path="res://Asset/player.png" id="3_xa75v"]
 
 [sub_resource type="Curve" id="Curve_y8w33"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -28,8 +28,10 @@ gravity = Vector2(0, 0)
 scale_amount_curve = SubResource("Curve_y8w33")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1241029480]
-scale = Vector2(0.12499999, 0.12499999)
-texture = ExtResource("1_kelma")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xa75v")
+region_enabled = true
+region_rect = Rect2(0, 0, 36, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763975835]
 shape = SubResource("RectangleShape2D_y8w33")
