@@ -11,26 +11,31 @@ class_name Player
 @onready var hurt_box_collision_shape: CollisionShape2D = $HurtBox/CollisionShape2D
 @onready var visual: Sprite2D = $Sprite2D
 
+const MAX_HEALTH: int = 3
+
 var dashing: bool = false
-var can_dash: bool = true
+var resurrecting: bool = false
 var last_direction: Vector2 = Vector2.ZERO
 
-var tween: Tween
 var can_move: bool = true
-
-const MAX_HEALTH: int = 3
+var can_dash: bool = true
+var can_take_damage: bool = true
 var current_health: int = MAX_HEALTH
+
+var tween: Tween
 
 func _ready():
 	dashing_time.timeout.connect(func():
 		dashing = false
-		hurt_box_collision_shape.disabled = false
+		if not resurrecting:
+			hurt_box_collision_shape.disabled = false
 		dashing_time.stop()
 		dash_cooldown.start()
 	)
 	
 	dash_cooldown.timeout.connect(func(): can_dash = true)
 	EventBus.player_died.connect(func(): can_move = false)
+	EventBus.player_revived.connect(resurrection)
 	
 
 func _physics_process(delta):
@@ -54,23 +59,41 @@ func _input(_event):
 		dashing_time.start()
 
 func _on_hurt_box_body_entered(body: Node2D):
-	var enemy_direction = (body as Enemy).get_last_direction()
-	var handle_damage = func(): take_damage(enemy_direction)
-	handle_damage.call_deferred()
+	if can_take_damage:
+		var enemy_direction = (body as Enemy).get_last_direction()
+		var handle_damage = func(): take_damage(enemy_direction)
+		can_take_damage = false
+		handle_damage.call_deferred()
 
 func take_damage(bounce_direction: Vector2):
 	hurt_box_collision_shape.disabled = true
 	velocity = bounce_direction * SPEED * DASH_FACTOR / 2
 	current_health -= 1
-	EventBus.screen_shake.emit()
 	if current_health == 0:
+		velocity = Vector2.ZERO
 		EventBus.player_died.emit()
 	elif current_health > 0:
-		if tween:
+		animate_damage(5)
+		EventBus.screen_shake.emit()
+
+func animate_damage(loops: int):
+	if tween:
 			tween.kill()
 		
-		tween = create_tween()
-		tween.tween_property(visual, "visible", false, 0.1)
-		tween.chain().tween_property(visual, "visible", true, 0.1)
-		tween.set_loops(5)
-		tween.finished.connect(func(): hurt_box_collision_shape.disabled = false)
+	tween = create_tween()
+	tween.tween_property(visual, "visible", false, 0.1)
+	tween.chain().tween_property(visual, "visible", true, 0.1)
+	tween.set_loops(loops)
+	tween.finished.connect(func():
+		hurt_box_collision_shape.disabled = false
+		can_take_damage = true
+		if resurrecting:
+			resurrecting = false
+	)
+
+func resurrection():
+	can_move = true
+	can_dash = true
+	current_health = MAX_HEALTH
+	resurrecting = true
+	animate_damage(10)

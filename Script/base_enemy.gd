@@ -10,11 +10,14 @@ var last_direction: Vector2 = Vector2.ZERO
 var movement_delta: float
 var can_move: bool = true
 
+var tween_resume: Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	EventBus.player_died.connect(func(): can_move = false)
+	EventBus.player_revived.connect(resume)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,3 +43,9 @@ func get_last_direction(): return last_direction
 func _on_velocity_computed(safe_velocity: Vector2):
 	if can_move:
 		move_and_collide(safe_velocity.normalized() * movement_delta)
+
+func resume():
+	if tween_resume: tween_resume.kill()
+
+	tween_resume = create_tween()
+	tween_resume.tween_method(func(value: bool): can_move = value, false, true, 1)
