@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bvwmtr2n0bkcm"]
+
+[ext_resource type="Script" uid="uid://dfyy3sm7u6kdt" path="res://Script/ankh_points.gd" id="1_dg6a6"]
+[ext_resource type="Texture2D" uid="uid://cbgtapecti83g" path="res://Asset/Ankh.png" id="1_dgpkj"]
+
+[node name="AnkhPoints" type="Node2D" unique_id=1878817884]
+script = ExtResource("1_dg6a6")
+
+[node name="Ankh2Shad" type="Sprite2D" parent="." unique_id=1977769812]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-30.999992, 2.4000015)
+rotation = -0.5235988
+texture = ExtResource("1_dgpkj")
+
+[node name="Ankh2" type="Sprite2D" parent="." unique_id=1568823736]
+modulate = Color(0.61960787, 0.6862745, 0.4745098, 1)
+position = Vector2(-31, 0.40000153)
+rotation = -0.5235988
+texture = ExtResource("1_dgpkj")
+
+[node name="Ankh1Shad" type="Sprite2D" parent="." unique_id=1784188928]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 2)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_dgpkj")
+
+[node name="Ankh1" type="Sprite2D" parent="." unique_id=52708466]
+modulate = Color(0.61960787, 0.6862745, 0.4745098, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_dgpkj")
+
+[node name="Ankh3Shad" type="Sprite2D" parent="." unique_id=776012899]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(31, 2.4000015)
+rotation = 0.5235988
+texture = ExtResource("1_dgpkj")
+
+[node name="Ankh3" type="Sprite2D" parent="." unique_id=1096756364]
+modulate = Color(0.61960787, 0.6862745, 0.4745098, 1)
+position = Vector2(31, 0.40000153)
+rotation = 0.5235988
+texture = ExtResource("1_dgpkj")

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b3hyige6pgfg1" path="res://Asset/level.png" id="1_pcvp0"]
 [ext_resource type="Script" uid="uid://c7ymkkyy8fyu4" path="res://Script/camera_manager.gd" id="3_ejll3"]
 [ext_resource type="Script" uid="uid://bfjcvv2v5o2iv" path="res://Script/ui_manager.gd" id="4_scul4"]
+[ext_resource type="PackedScene" uid="uid://bvwmtr2n0bkcm" path="res://Scene/ankh_points.tscn" id="6_37axr"]
 
 [sub_resource type="Gradient" id="Gradient_pcvp0"]
 colors = PackedColorArray(0.16470589, 0.16470589, 0.16470589, 1, 0.16470589, 0.16470589, 0.16470589, 1)
@@ -14,16 +15,10 @@ gradient = SubResource("Gradient_pcvp0")
 width = 320
 height = 320
 
-[sub_resource type="Gradient" id="Gradient_37axr"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eae6q"]
-gradient = SubResource("Gradient_37axr")
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pcvp0"]
-vertices = PackedVector2Array(280, 256, 40, 256, 40, 40, 280, 40)
+vertices = PackedVector2Array(280, 248, 40, 248, 40, 40, 280, 40)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 296, 24, 296, 272, 24, 272)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 296, 24, 296, 264, 24, 264)])
 agent_radius = 16.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_scul4"]
@@ -38,46 +33,34 @@ position = Vector2(160, 160)
 texture = SubResource("GradientTexture2D_37axr")
 metadata/_edit_lock_ = true
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1660607340]
-position = Vector2(182.99998, 299)
-scale = Vector2(0.31250006, 0.5)
-energy = 2.06
-texture = SubResource("GradientTexture2D_eae6q")
-texture_scale = 1.05
-
 [node name="Level" type="Sprite2D" parent="." unique_id=1204415293]
-light_mask = 2
 position = Vector2(160, 160)
 texture = ExtResource("1_pcvp0")
 metadata/_edit_lock_ = true
 
+[node name="AnkhPoints" parent="." unique_id=1878817884 instance=ExtResource("6_37axr")]
+position = Vector2(160, 287)
+
 [node name="LevelManager" parent="." unique_id=1444721510 instance=ExtResource("1_dlwip")]
-visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=800454323]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_pcvp0")
 
 [node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=901506894]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" unique_id=225221042]
-visible = false
-position = Vector2(4, -1)
-polygon = PackedVector2Array(20, 273, 292, 273, 292, 25, 20, 25, 20, 321, -20, 321, -24, -16, 192, -16, 384, 0, 352, 144, 364, 345, 292, 377, 20, 321)
+position = Vector2(0, 6)
+polygon = PackedVector2Array(20, 262, 300, 262, 300, 12, 20, 12, 20, 321, -20, 321, -24, -16, 192, -16, 384, 0, 352, 144, 364, 345, 292, 377, 20, 321)
 
 [node name="Player" parent="." unique_id=370329021 instance=ExtResource("1_emx41")]
-visible = false
-position = Vector2(144, 96)
+position = Vector2(163, 137)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1646712817]
-visible = false
 offset = Vector2(160, 160)
 script = ExtResource("3_ejll3")
 strength = 1.0
 
 [node name="UI" type="Control" parent="." unique_id=2092935311]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +72,7 @@ grow_vertical = 2
 script = ExtResource("4_scul4")
 
 [node name="ColorRect" type="ColorRect" parent="UI" unique_id=1142385732]
+light_mask = 2
 layout_mode = 0
 offset_left = -50.0
 offset_top = -50.0
@@ -124,6 +108,3 @@ text = "STRIVE REMAINING"
 label_settings = SubResource("LabelSettings_pcvp0")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=809717437]
-color = Color(0.8217887, 0.82178867, 0.82178867, 1)

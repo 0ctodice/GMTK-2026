@@ -7,7 +7,7 @@ var tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventBus.screen_shake.connect(shake)
+	EventBus.took_damage.connect(shake)
 
 
 func shake():

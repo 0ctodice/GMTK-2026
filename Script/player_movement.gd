@@ -34,7 +34,6 @@ func _ready():
 	)
 	
 	dash_cooldown.timeout.connect(func(): can_dash = true)
-	EventBus.player_died.connect(func(): can_move = false)
 	EventBus.player_revived.connect(resurrection)
 	
 
@@ -71,12 +70,14 @@ func take_damage(bounce_direction: Vector2):
 	current_health -= 1
 	if current_health == 0:
 		velocity = Vector2.ZERO
-		EventBus.player_died.emit()
+		can_move = false
+		animate_damage(5, EventBus.player_died.emit)
 	elif current_health > 0:
-		animate_damage(5)
-		EventBus.screen_shake.emit()
+		animate_damage(5, reenable_collision)
 
-func animate_damage(loops: int):
+	EventBus.took_damage.emit()
+
+func animate_damage(loops: int, action: Callable):
 	if tween:
 			tween.kill()
 		
@@ -84,16 +85,17 @@ func animate_damage(loops: int):
 	tween.tween_property(visual, "visible", false, 0.1)
 	tween.chain().tween_property(visual, "visible", true, 0.1)
 	tween.set_loops(loops)
-	tween.finished.connect(func():
-		hurt_box_collision_shape.disabled = false
-		can_take_damage = true
-		if resurrecting:
-			resurrecting = false
-	)
+	tween.finished.connect(action)
+
+func reenable_collision():
+	hurt_box_collision_shape.disabled = false
+	can_take_damage = true
+	if resurrecting:
+		resurrecting = false
 
 func resurrection():
 	can_move = true
 	can_dash = true
 	current_health = MAX_HEALTH
 	resurrecting = true
-	animate_damage(10)
+	animate_damage(10, reenable_collision)
