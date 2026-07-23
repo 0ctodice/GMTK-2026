@@ -80,31 +80,109 @@ offset_right = 370.0
 offset_bottom = 370.0
 color = Color(0.16470589, 0.16470589, 0.16470589, 1)
 
-[node name="Strive" type="Label" parent="UI" unique_id=1133821549]
+[node name="StriveSection" type="Control" parent="UI" unique_id=2021644853]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 138.0
-offset_bottom = -137.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "9"
+
+[node name="Strive" type="Label" parent="UI/StriveSection" unique_id=1133821549]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "6"
 label_settings = SubResource("LabelSettings_scul4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Remaining" type="Label" parent="UI" unique_id=1439172269]
+[node name="Remaining" type="Label" parent="UI/StriveSection" unique_id=1439172269]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 16.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "STRIVE REMAINING"
+label_settings = SubResource("LabelSettings_pcvp0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverSection" type="Control" parent="UI" unique_id=734298964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Failed" type="Label" parent="UI/GameOverSection" unique_id=524522536]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -52.5
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU FAILED"
+label_settings = SubResource("LabelSettings_scul4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sent" type="Label" parent="UI/GameOverSection" unique_id=1143192663]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOUR SOUL HAS BEEN SENT TO"
+label_settings = SubResource("LabelSettings_pcvp0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Limbo" type="Label" parent="UI/GameOverSection" unique_id=284388240]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 8.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LIMBO"
+label_settings = SubResource("LabelSettings_scul4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retry" type="Button" parent="UI/GameOverSection" unique_id=376094141]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -145.0
-offset_bottom = -121.99985
+offset_left = 64.0
+offset_top = -56.0
+offset_right = -64.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "STRIVE REMAINING"
-label_settings = SubResource("LabelSettings_pcvp0")
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "RETRY"
+
+[connection signal="pressed" from="UI/GameOverSection/Retry" to="UI" method="_on_retry_pressed"]

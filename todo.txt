@@ -19,18 +19,18 @@
     - avoir une barre de santé : DONE
     - prendre des dégats : DONE
     - fausse mort => lancement du shop
-    - perte d'une vie
+    - perte d'une vie : DONE
 
 - Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
+    - Animation de la porte pour le changement de level
 - shop
-    - Level en pause
     - Choix aléatoire des perks
     - Gestion du roaster
 - Menu
     - Lancement du Jeux
     - Options
     - Pause/Resume
-    - Ecran de mort total
+    - Ecran de mort total : DONE
 
 2. Visuel :
 
