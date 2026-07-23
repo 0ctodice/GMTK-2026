@@ -132,6 +132,44 @@ label_settings = SubResource("LabelSettings_pcvp0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DoorSection" type="Control" parent="UI" unique_id=1449269037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DoorNumber" type="Label" parent="UI/DoorSection" unique_id=609841442]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GATE 1"
+label_settings = SubResource("LabelSettings_scul4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DoorName" type="Label" parent="UI/DoorSection" unique_id=639984183]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 16.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ENTERING THE DUAT"
+label_settings = SubResource("LabelSettings_pcvp0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GameOverSection" type="Control" parent="UI" unique_id=734298964]
 layout_mode = 1
 anchors_preset = 15
@@ -208,5 +246,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [connection signal="pressed" from="UI/GameOverSection/Retry" to="UI" method="_on_retry_pressed"]

@@ -14,3 +14,5 @@ signal level_finished
 signal door_entered
 signal new_level(level_index)
 signal game_finished
+
+signal close_door

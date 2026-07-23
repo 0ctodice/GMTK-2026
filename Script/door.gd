@@ -10,7 +10,7 @@ var tween: Tween
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.level_finished.connect(open_door)
-	EventBus.new_level.connect(close_door)
+	EventBus.close_door.connect(close_door)
 
 func open_door():
 	EventBus.screen_shake.emit()
@@ -24,7 +24,7 @@ func open_door():
 	tween.tween_property(door, "position", door.position + Vector2.UP * 62, 1)
 	tween.finished.connect(func(): collision_shape.disabled = false)
 
-func close_door(_level_index: int):
+func close_door():
 	collision_shape.set_deferred("disabled", true)
 	door.set_deferred("position", door.position + Vector2.DOWN * 62)
 

@@ -11,19 +11,19 @@ var max_spawners_number: int
 var total_spawners: int = 0
 var total_enemies_alive: int = 0
 
-var can_spawn: bool = true
+var can_spawn: bool = false
 var finished_spawning: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_timer.timeout.connect(_create_spawners)
-	set_level()
-	spawn_timer.start(randf_range(1, 5))
 	EventBus.player_died.connect(func(): can_spawn = false)
 	EventBus.enemies_spawned.connect(func(new_enemies): total_enemies_alive += new_enemies)
 	EventBus.enemy_died.connect(_on_enemy_died)
 	EventBus.new_level.connect(func(level_index):
 		if level_index < 12:
+			set_level()
+			can_spawn = true
 			spawn_timer.start(randf_range(1, 5))
 	)
 

@@ -17,8 +17,8 @@ var dashing: bool = false
 var resurrecting: bool = false
 var last_direction: Vector2 = Vector2.ZERO
 
-var can_move: bool = true
-var can_dash: bool = true
+var can_move: bool = false
+var can_dash: bool = false
 var can_take_damage: bool = true
 var current_health: int = MAX_HEALTH
 
@@ -35,6 +35,10 @@ func _ready():
 	
 	dash_cooldown.timeout.connect(func(): can_dash = true)
 	EventBus.player_revived.connect(resurrection)
+	EventBus.new_level.connect(func(_level_index):
+		can_move = true
+		can_dash = true
+	)
 	
 
 func _physics_process(delta):
