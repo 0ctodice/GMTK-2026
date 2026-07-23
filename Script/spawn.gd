@@ -1,11 +1,12 @@
 extends Node2D
-
+class_name Spawn
 @export var enemy_scene: PackedScene
 
 @onready var sprite: Sprite2D = $Sprite2D
 
 var rng: RandomNumberGenerator
 var tween: Tween
+var spawn_number: int = 3
 
 var can_spawn: bool = true
 
@@ -23,16 +24,12 @@ func _ready():
 	EventBus.player_died.connect(func(): can_spawn = false)
 
 func _spawn_enemies():
-	var spawn_number: int = rng.randi_range(1, 5)
-
 	if can_spawn:
 		for i in range(spawn_number):
 			var enemy_instance = enemy_scene.instantiate()
 			enemy_instance.global_position = global_position
 			get_parent().add_child(enemy_instance)
-
-		EventBus.enemies_spawned.emit(spawn_number)
-
+			
 	if tween:
 		tween.kill()
 
@@ -41,3 +38,5 @@ func _spawn_enemies():
 	tween.tween_property(sprite, "scale", Vector2.ZERO, 0.5)
 
 	tween.finished.connect(queue_free)
+
+func set_spawn_number(value: int): spawn_number = value

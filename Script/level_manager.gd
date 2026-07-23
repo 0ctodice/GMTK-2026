@@ -14,13 +14,15 @@ var total_enemies_alive: int = 0
 var can_spawn: bool = false
 var finished_spawning: bool = false
 
+var current_level: int = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_timer.timeout.connect(_create_spawners)
 	EventBus.player_died.connect(func(): can_spawn = false)
-	EventBus.enemies_spawned.connect(func(new_enemies): total_enemies_alive += new_enemies)
 	EventBus.enemy_died.connect(_on_enemy_died)
 	EventBus.new_level.connect(func(level_index):
+		current_level = level_index
 		if level_index < 12:
 			set_level()
 			can_spawn = true
@@ -45,6 +47,9 @@ func _create_spawners():
 			
 			var spawn_instance = spawn_scene.instantiate()
 			spawn_instance.global_position = Vector2(rand_x, rand_y)
+			var spawn_number = randi_range(1, 3 + floor(current_level / 2.0))
+			total_enemies_alive += spawn_number
+			(spawn_instance as Spawn).set_spawn_number(spawn_number)
 			add_child(spawn_instance)
 
 		total_spawners += spawner_number
@@ -62,4 +67,4 @@ func _on_enemy_died():
 func set_level():
 	total_spawners = 0
 	finished_spawning = false
-	max_spawners_number = randi_range(5, 12)
+	max_spawners_number = randi_range(5 + floor(current_level / 2.0), 5 + current_level)

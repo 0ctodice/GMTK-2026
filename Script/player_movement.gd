@@ -21,10 +21,13 @@ var can_move: bool = false
 var can_dash: bool = false
 var can_take_damage: bool = true
 var current_health: int = MAX_HEALTH
+var initial_position: Vector2
 
 var tween: Tween
 
 func _ready():
+	initial_position = position
+
 	dashing_time.timeout.connect(func():
 		dashing = false
 		if not resurrecting:
@@ -40,17 +43,19 @@ func _ready():
 		can_dash = true
 	)
 	
+	EventBus.door_entered.connect(func(): z_index = -1)
+	EventBus.close_door.connect(reset_player)
 
 func _physics_process(delta):
 	if not can_move:
 		return
-		
+	
 	if not dashing:
 		last_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		velocity = lerp(velocity, last_direction * SPEED, delta * (FRICTION if last_direction == Vector2.ZERO else ACCELERATION))
 	else:
 		velocity = lerp(velocity, last_direction * SPEED * DASH_FACTOR, delta * ACCELERATION * DASH_FACTOR)
-		
+	
 	move_and_slide()
 
 func _input(_event):
@@ -102,3 +107,12 @@ func resurrection():
 	current_health = MAX_HEALTH
 	resurrecting = true
 	animate_damage(10, reenable_collision)
+
+
+func reset_player():
+	z_index = 0
+	can_move = false
+	can_dash = false
+	velocity = Vector2.ZERO
+	last_direction = Vector2.ZERO
+	position = initial_position

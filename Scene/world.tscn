@@ -9,14 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bvwmtr2n0bkcm" path="res://Scene/ankh_points.tscn" id="6_37axr"]
 [ext_resource type="Shader" uid="uid://bvx2oktu364ro" path="res://Script/crt.gdshader" id="8_ddf65"]
 
-[sub_resource type="Gradient" id="Gradient_pcvp0"]
-colors = PackedColorArray(0.16470589, 0.16470589, 0.16470589, 1, 0.16470589, 0.16470589, 0.16470589, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_37axr"]
-gradient = SubResource("Gradient_pcvp0")
-width = 320
-height = 320
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pcvp0"]
 vertices = PackedVector2Array(280, 248, 40, 248, 40, 40, 280, 40)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -32,11 +24,6 @@ font_size = 32
 shader = ExtResource("8_ddf65")
 
 [node name="World" type="Node2D" unique_id=631941428]
-
-[node name="Background" type="Sprite2D" parent="." unique_id=1319997885]
-position = Vector2(160, 160)
-texture = SubResource("GradientTexture2D_37axr")
-metadata/_edit_lock_ = true
 
 [node name="Level" type="Sprite2D" parent="." unique_id=1204415293]
 position = Vector2(160, 160)
@@ -67,7 +54,7 @@ position = Vector2(0, 6)
 polygon = PackedVector2Array(20, 262, 300, 262, 300, 12, 20, 12, 20, 321, -20, 321, -24, -16, 192, -16, 384, 0, 352, 144, 364, 345, 292, 377, 20, 321)
 
 [node name="Player" parent="." unique_id=370329021 instance=ExtResource("1_emx41")]
-position = Vector2(163, 137)
+position = Vector2(160, 200)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1646712817]
 offset = Vector2(160, 160)
@@ -246,6 +233,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
 [connection signal="pressed" from="UI/GameOverSection/Retry" to="UI" method="_on_retry_pressed"]

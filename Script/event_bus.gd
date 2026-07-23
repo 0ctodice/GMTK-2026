@@ -3,7 +3,6 @@ extends Node
 signal took_damage
 signal screen_shake
 
-signal enemies_spawned(enemie_number)
 signal enemy_died
 
 signal player_died

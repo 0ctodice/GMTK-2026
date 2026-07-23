@@ -35,7 +35,7 @@ const DOORS = [
 ]
 var tween: Tween
 var state: STATES = STATES.ENTERING_DOOR
-var strive_remaining: int = 1
+var strive_remaining: int = 6
 var current_level: int = 0
 
 # Called when the node enters the scene tree for the first time.

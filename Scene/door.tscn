@@ -19,9 +19,11 @@ collision_mask = 2
 script = ExtResource("1_xwlx2")
 
 [node name="DoorDepth" type="Sprite2D" parent="." unique_id=365183707]
+z_index = -1
 texture = ExtResource("1_lmuuw")
 
 [node name="Door" type="Sprite2D" parent="." unique_id=830574294]
+z_index = -1
 position = Vector2(0, -62)
 texture = ExtResource("2_xwlx2")
 
@@ -29,6 +31,7 @@ texture = ExtResource("2_xwlx2")
 texture = ExtResource("3_nccli")
 
 [node name="DoorOverflow" type="Sprite2D" parent="." unique_id=1665015182]
+visible = false
 position = Vector2(0, -66)
 texture = ExtResource("4_vtnyr")
 
