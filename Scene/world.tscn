@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dk6ehqau60a2a" path="res://Scene/door.tscn" id="4_ol2hl"]
 [ext_resource type="Script" uid="uid://bfjcvv2v5o2iv" path="res://Script/ui_manager.gd" id="4_scul4"]
 [ext_resource type="PackedScene" uid="uid://bvwmtr2n0bkcm" path="res://Scene/ankh_points.tscn" id="6_37axr"]
+[ext_resource type="Shader" uid="uid://bvx2oktu364ro" path="res://Script/crt.gdshader" id="8_ddf65"]
 
 [sub_resource type="Gradient" id="Gradient_pcvp0"]
 colors = PackedColorArray(0.16470589, 0.16470589, 0.16470589, 1, 0.16470589, 0.16470589, 0.16470589, 1)
@@ -26,6 +27,9 @@ agent_radius = 16.0
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_pcvp0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ol2hl"]
+shader = ExtResource("8_ddf65")
 
 [node name="World" type="Node2D" unique_id=631941428]
 
@@ -194,5 +198,15 @@ offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "RETRY"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1468300057]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=765518710]
+material = SubResource("ShaderMaterial_ol2hl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="UI/GameOverSection/Retry" to="UI" method="_on_retry_pressed"]

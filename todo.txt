@@ -22,7 +22,9 @@
     - perte d'une vie : DONE
 
 - Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
-    - Animation de la porte pour le changement de level
+    - Animation de la porte pour le changement de level : DONE
+    - Faire l'écran de nouveaux niveaux
+    
 - shop
     - Choix aléatoire des perks
     - Gestion du roaster
