@@ -12,12 +12,16 @@
 
 - Gestion des vagues : DONE
 
-- Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
+- Animer l'apparation des spawn : apparation du spawn > "temps d'attente pour notifier le joueur" > invocation des monstres > disparition : DONE
+- Particles de déplacement : DONE
+
 - Gestion de la vie
-    - avoir une barre de santé
-    - prendre des dégats
+    - avoir une barre de santé : DONE
+    - prendre des dégats : DONE
     - fausse mort => lancement du shop
     - perte d'une vie
+
+- Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
 - shop
     - Level en pause
     - Choix aléatoire des perks

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://copfvkcl5x44x"]
 
-[ext_resource type="Script" uid="uid://calldw2uy72js" path="res://Script/game_manager.gd" id="1_5n28g"]
+[ext_resource type="Script" uid="uid://calldw2uy72js" path="res://Script/level_manager.gd" id="1_5n28g"]
 [ext_resource type="PackedScene" uid="uid://q0ny5culue5d" path="res://Scene/spawn.tscn" id="2_ostif"]
 
-[node name="GameManager" type="Node2D" unique_id=1444721510]
+[node name="Levelanager" type="Node2D" unique_id=1444721510]
 script = ExtResource("1_5n28g")
 spawn_scene = ExtResource("2_ostif")
 

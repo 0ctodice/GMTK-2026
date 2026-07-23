@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://ci3smpy3bgtyl"]
 
-[ext_resource type="PackedScene" uid="uid://copfvkcl5x44x" path="res://Scene/game_manager.tscn" id="1_dlwip"]
+[ext_resource type="PackedScene" uid="uid://copfvkcl5x44x" path="res://Scene/level_manager.tscn" id="1_dlwip"]
 [ext_resource type="PackedScene" uid="uid://dgil5o3d8ni15" path="res://Scene/player.tscn" id="1_emx41"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_emx41"]
-vertices = PackedVector2Array(310, 174, 10, 174, 10, 10, 310, 10)
+vertices = PackedVector2Array(294, 158, 26, 158, 26, 26, 294, 26)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 320, 0, 320, 184, 0, 184)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, 16, 304, 16, 304, 168, 16, 168)])
 
 [node name="World" type="Node2D" unique_id=631941428]
 
@@ -22,3 +22,6 @@ polygon = PackedVector2Array(8, 176, 312, 176, 312, 8, 8, 8, 8, 184, -8, 184, -2
 
 [node name="Player" parent="." unique_id=370329021 instance=ExtResource("1_emx41")]
 position = Vector2(144, 96)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1646712817]
+offset = Vector2(160, 90)

@@ -8,13 +8,16 @@ class_name Enemy
 var player: Player
 var last_direction: Vector2 = Vector2.ZERO
 var movement_delta: float
+var can_move: bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
+	EventBus.player_died.connect(func(): can_move = false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	# Do not query when the map has never synchronized and is empty.
 	if NavigationServer2D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
 		return
@@ -35,4 +38,5 @@ func _physics_process(delta):
 func get_last_direction(): return last_direction
 
 func _on_velocity_computed(safe_velocity: Vector2):
-	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
+	if can_move:
+		move_and_collide(safe_velocity.normalized() * movement_delta)
