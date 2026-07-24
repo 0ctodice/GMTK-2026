@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://evm5yr8pompx"]
+
+[ext_resource type="Script" uid="uid://drfvimm5gmwhl" path="res://Script/perk_manager.gd" id="1_77xdo"]
+
+[node name="PerkManager" type="Node2D" unique_id=1085121323]
+script = ExtResource("1_77xdo")
