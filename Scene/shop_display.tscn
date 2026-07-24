@@ -23,11 +23,11 @@ layout_mode = 2
 [node name="SlotDisplay3" parent="." unique_id=1060141750 instance=ExtResource("1_lx344")]
 layout_mode = 2
 
-[node name="SlotDisplay4" parent="." unique_id=687158685 instance=ExtResource("1_lx344")]
+[node name="SlotDisplay4" parent="." unique_id=834389601 instance=ExtResource("1_lx344")]
 layout_mode = 2
 
-[node name="SlotDisplay5" parent="." unique_id=299914028 instance=ExtResource("1_lx344")]
+[node name="SlotDisplay5" parent="." unique_id=1041961347 instance=ExtResource("1_lx344")]
 layout_mode = 2
 
-[node name="SlotDisplay6" parent="." unique_id=1149904158 instance=ExtResource("1_lx344")]
+[node name="SlotDisplay6" parent="." unique_id=420157972 instance=ExtResource("1_lx344")]
 layout_mode = 2

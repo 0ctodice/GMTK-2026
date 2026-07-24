@@ -24,6 +24,8 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_pcvp0"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_5gtdk"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ol2hl"]
 shader = ExtResource("8_ddf65")
 
@@ -49,7 +51,6 @@ position = Vector2(288, 256)
 position = Vector2(160, 160)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=800454323]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_pcvp0")
 
 [node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=901506894]
@@ -87,7 +88,6 @@ offset_bottom = 370.0
 color = Color(0.16470589, 0.16470589, 0.16470589, 1)
 
 [node name="StriveSection" type="Control" parent="UI" unique_id=2021644853]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,7 +127,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DoorSection" type="Control" parent="UI" unique_id=1449269037]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,7 +165,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameOverSection" type="Control" parent="UI" unique_id=734298964]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,7 +251,7 @@ anchor_bottom = 0.14400001
 offset_top = -0.040000916
 offset_bottom = -0.08000183
 grow_horizontal = 2
-text = "CHOOSE A PERK TO HELP YOU"
+text = "CHOOSE PERKS TO HELP YOU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -263,9 +261,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 47.0
-offset_top = -77.0
+offset_top = -102.0
 offset_right = -47.0
-offset_bottom = 51.0
+offset_bottom = 26.0
 
 [node name="HSeparator" type="HSeparator" parent="UI/ShopSection" unique_id=1359355563]
 layout_mode = 1
@@ -274,9 +272,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 60.0
-offset_top = -112.0
+offset_top = -136.0
 offset_right = -60.0
-offset_bottom = -81.0
+offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -287,14 +285,27 @@ anchors_preset = -1
 anchor_top = 0.74100006
 anchor_bottom = 0.94100004
 offset_left = 47.0
-offset_top = -0.120025635
+offset_top = -28.120026
 offset_right = -47.0
-offset_bottom = -0.120025635
+offset_bottom = -28.120026
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Timer" type="Label" parent="UI/ShopSection" unique_id=330450254]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.072000004
+anchor_right = 1.0
+anchor_bottom = 0.14400001
+offset_top = 250.95999
+offset_bottom = 250.92
+grow_horizontal = 2
+text = "45"
+label_settings = SubResource("LabelSettings_5gtdk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CrtEffect" type="CanvasLayer" parent="." unique_id=1468300057]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CrtEffect" unique_id=765518710]
 material = SubResource("ShaderMaterial_ol2hl")

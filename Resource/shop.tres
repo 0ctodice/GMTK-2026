@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="Shop" format=3 uid="uid://cbhab8fgqakgl"]
 
-[ext_resource type="Script" uid="uid://b4o0kua5oy7pn" path="res://Script/Perks/perk_base.gd" id="1_38wwc"]
 [ext_resource type="Script" uid="uid://clkj6ca1m2hmd" path="res://Script/shop.gd" id="1_dkk8p"]
 
 [resource]

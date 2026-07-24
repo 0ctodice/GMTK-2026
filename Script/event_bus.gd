@@ -15,3 +15,6 @@ signal new_level(level_index)
 signal game_finished
 
 signal close_door
+
+signal update_shop
+signal clear_shop

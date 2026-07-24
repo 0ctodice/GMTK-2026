@@ -16,9 +16,12 @@ script = ExtResource("1_rqe0w")
 
 [node name="SlotDisplay" parent="." unique_id=1509815111 instance=ExtResource("2_6iivp")]
 layout_mode = 2
+is_player_item = true
 
 [node name="SlotDisplay2" parent="." unique_id=428557983 instance=ExtResource("2_6iivp")]
 layout_mode = 2
+is_player_item = true
 
 [node name="SlotDisplay3" parent="." unique_id=1060141750 instance=ExtResource("2_6iivp")]
 layout_mode = 2
+is_player_item = true

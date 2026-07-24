@@ -9,8 +9,3 @@ func take_damage(damage: int):
 		EventBus.enemy_died.emit()
 	else:
 		get_parent().animate_damage()
-
-
-func _input(_event):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		take_damage(10)

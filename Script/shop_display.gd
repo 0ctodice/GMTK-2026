@@ -6,7 +6,8 @@ var perk_manager: PerkManager
 func _ready():
 	perk_manager = get_tree().get_first_node_in_group("PerkManager")
 	shop.item_changed.connect(on_items_changed)
-	update_shop_display()
+	EventBus.update_shop.connect(update_shop_display)
+	EventBus.clear_shop.connect(clear_shop_display)
 
 func update_shop_display():
 	for index in shop.items.size():
@@ -18,6 +19,15 @@ func update_shop_slot_display(index):
 	var item = shop.items[index]
 	slot_display.display_item(item)
 
-func on_items_changed(indexes):
-	for index in indexes:
-		update_shop_slot_display(index)
+func on_items_changed(indexes, is_player_items):
+	for i in range(indexes.size()):
+		if not is_player_items[i]:
+			update_shop_slot_display(indexes[i])
+
+
+func clear_shop_display():
+	for index in shop.items.size():
+		var perk = shop.remove_item(index, false)
+		if perk != null:
+			perk_manager.add_perk(perk)
+			update_shop_slot_display(index)

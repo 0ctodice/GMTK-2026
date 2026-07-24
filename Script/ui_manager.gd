@@ -1,16 +1,29 @@
 extends Control
 
+# STRIVE SECTION
 @onready var color_rect: ColorRect = $ColorRect
 @onready var strive: Label = $StriveSection/Strive
 @onready var remaining: Label = $StriveSection/Remaining
 
+# SHOP SECTION
+
+@onready var shop_label: Label = $ShopSection/Title
+@onready var shop_display: GridContainer = $ShopSection/ShopDisplay
+@onready var separator: HSeparator = $ShopSection/HSeparator
+@onready var inventory_display: GridContainer = $ShopSection/InventoryDisplay
+@onready var timer_label: Label = $ShopSection/Timer
+
+# DOOR SECTION
 @onready var door_number: Label = $DoorSection/DoorNumber
 @onready var door_name: Label = $DoorSection/DoorName
 
+# GAME OVE SECTION
 @onready var failed: Label = $GameOverSection/Failed
 @onready var sent: Label = $GameOverSection/Sent
 @onready var limbo: Label = $GameOverSection/Limbo
 @onready var retry: Button = $GameOverSection/Retry
+
+var game_start: bool = true
 
 enum STATES {
 	IN_GAME,
@@ -44,13 +57,25 @@ func _ready():
 	EventBus.player_died.connect(transition_to_ui)
 	EventBus.door_entered.connect(transition_entering_door)
 
+	# STRIVE SECTION
 	strive.text = str(strive_remaining)
 	strive.modulate = Color.TRANSPARENT
 	remaining.modulate = Color.TRANSPARENT
 	
+	# DOOR SECTION
 	door_number.modulate = Color.TRANSPARENT
 	door_name.modulate = Color.TRANSPARENT
 
+	# SHOP SECTION
+	shop_label.modulate = Color.TRANSPARENT
+	shop_display.modulate = Color.TRANSPARENT
+	shop_display.visible = false
+	separator.modulate = Color.TRANSPARENT
+	inventory_display.modulate = Color.TRANSPARENT
+	inventory_display.visible = false
+	timer_label.modulate = Color.TRANSPARENT
+
+	# GAME OVE SECTION
 	failed.modulate = Color.TRANSPARENT
 	sent.modulate = Color.TRANSPARENT
 	limbo.modulate = Color.TRANSPARENT
@@ -58,7 +83,7 @@ func _ready():
 	retry.disabled = true
 	retry.modulate = Color.TRANSPARENT
 
-	# transition_entering_door()
+	transition_entering_door()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,8 +98,13 @@ func transition_to_ui():
 	tween.tween_property(color_rect, "modulate", Color.WHITE, 0.25)
 	tween.chain().tween_property(strive, "modulate", Color.WHITE, 1)
 	tween.chain().tween_property(remaining, "modulate", Color.WHITE, 1)
+	tween.chain().tween_property(color_rect, "modulate", Color.WHITE, 2)
+	tween.chain().tween_property(strive, "modulate", Color.TRANSPARENT, 1)
+	tween.parallel().tween_property(remaining, "modulate", Color.TRANSPARENT, 1)
+	tween.parallel().tween_property(remaining, "modulate", Color.TRANSPARENT, 1)
 	tween.finished.connect(func():
 		if strive_remaining > 0:
+			EventBus.update_shop.emit()
 			transition_to_shop()
 		else:
 			transition_to_game_over()
@@ -82,6 +112,42 @@ func transition_to_ui():
 
 func transition_to_shop():
 	state = STATES.IN_SHOP
+	if tween: tween.kill()
+
+	tween = create_tween()
+
+	var timing: int = 30
+
+	tween.tween_property(shop_label, "modulate", Color.WHITE, 1)
+	tween.parallel().tween_callback(func(): inventory_display.visible = true)
+	tween.parallel().tween_callback(func(): shop_display.visible = true)
+	tween.parallel().tween_property(shop_display, "modulate", Color.WHITE, 1)
+	tween.parallel().tween_property(separator, "modulate", Color.WHITE, 1)
+	tween.parallel().tween_property(inventory_display, "modulate", Color.WHITE, 1)
+	tween.parallel().tween_property(timer_label, "modulate", Color.WHITE, 1)
+	tween.finished.connect(func():
+		if tween: tween.kill()
+		tween = create_tween()
+		tween.tween_method(func(value: int):
+			timer_label.text = str(timing - value)
+			, 0, timing, timing)
+		tween.finished.connect(hide_shop)
+	)
+
+func hide_shop():
+	if tween: tween.kill()
+
+	tween = create_tween()
+
+	tween.tween_property(shop_label, "modulate", Color.TRANSPARENT, 1)
+	tween.parallel().tween_property(shop_display, "modulate", Color.TRANSPARENT, 1)
+	tween.parallel().tween_property(separator, "modulate", Color.TRANSPARENT, 1)
+	tween.parallel().tween_property(inventory_display, "modulate", Color.TRANSPARENT, 1)
+	tween.parallel().tween_property(timer_label, "modulate", Color.TRANSPARENT, 1)
+	tween.chain().tween_callback(func(): inventory_display.visible = false)
+	tween.parallel().tween_callback(func(): shop_display.visible = false)
+	tween.parallel().tween_callback(EventBus.clear_shop.emit)
+	tween.finished.connect(transition_to_game)
 
 func transition_entering_door():
 	if tween: tween.kill()
@@ -102,9 +168,15 @@ func transition_entering_door():
 
 	tween.chain().tween_property(door_number, "modulate", Color.TRANSPARENT, 1)
 	tween.parallel().tween_property(door_name, "modulate", Color.TRANSPARENT, 1)
-	tween.chain().tween_property(color_rect, "modulate", Color.TRANSPARENT, 1)
+	if not game_start:
+		tween.chain().tween_property(color_rect, "modulate", Color.TRANSPARENT, 1)
+		tween.finished.connect(func(): EventBus.new_level.emit(current_level))
+	else:
+		tween.finished.connect(func():
+			EventBus.update_shop.emit()
+			transition_to_shop()
+		)
 
-	tween.finished.connect(func(): EventBus.new_level.emit(current_level))
 
 func transition_to_game_over():
 	state = STATES.IN_GAME_OVER
@@ -113,9 +185,6 @@ func transition_to_game_over():
 	if tween: tween.kill()
 	tween = create_tween()
 	
-	tween.parallel().tween_property(strive, "modulate", Color.TRANSPARENT, 1)
-	tween.parallel().tween_property(remaining, "modulate", Color.TRANSPARENT, 1)
-	tween.parallel().tween_property(remaining, "modulate", Color.TRANSPARENT, 1)
 	tween.chain().tween_property(failed, "modulate", Color.WHITE, 0.5)
 	tween.chain().tween_property(failed, "modulate", Color.WHITE, 1)
 	tween.chain().tween_property(sent, "modulate", Color.WHITE, 0.25)
@@ -133,11 +202,11 @@ func transition_to_game():
 	tween.tween_property(color_rect, "modulate", Color.TRANSPARENT, 0.5)
 	tween.parallel().tween_property(strive, "modulate", Color.TRANSPARENT, 0.5)
 	tween.parallel().tween_property(remaining, "modulate", Color.TRANSPARENT, 0.25)
-	tween.finished.connect(EventBus.player_revived.emit)
-
-func _input(_event):
-	if state == STATES.IN_SHOP and Input.is_action_just_pressed("dash"): transition_to_game()
-
+	if game_start:
+		game_start = false
+		tween.finished.connect(func(): EventBus.new_level.emit(current_level))
+	else:
+		tween.finished.connect(EventBus.player_revived.emit)
 
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
