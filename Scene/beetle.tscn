@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://phqcs2nf2uk3" path="res://Script/beetle.gd" id="1_vyyyo"]
 [ext_resource type="Texture2D" uid="uid://cqjmuyo274tjj" path="res://Asset/beetle.png" id="2_u4wqp"]
+[ext_resource type="Script" uid="uid://s0n1wtgfa8qx" path="res://Script/enemy_hurt_box.gd" id="3_u4wqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
 size = Vector2(16, 16)
@@ -56,3 +57,12 @@ avoidance_enabled = true
 wait_time = 0.5
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=2035818275]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=502152407]
+collision_layer = 8
+collision_mask = 32
+script = ExtResource("3_u4wqp")
+LIFE_POINTS = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=898176761]
+shape = SubResource("RectangleShape2D_eae6q")

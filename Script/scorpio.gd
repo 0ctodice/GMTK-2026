@@ -6,6 +6,8 @@ class_name Scorpio
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
+@onready var visual: Sprite2D = $Visual
+
 @onready var spin_timer: Timer = $SpinTimer
 @onready var spin_cooldown: Timer = $SpinCooldown
 
@@ -15,6 +17,7 @@ var movement_delta: float
 var can_move: bool = true
 
 var tween_resume: Tween
+var tween: Tween
 
 var spinning: bool = false
 
@@ -57,7 +60,7 @@ func _process(delta):
 
 	last_direction = new_velocity.normalized()
 
-	if spinning:
+	if can_move and spinning:
 		rotation += SPIN_SPEED * delta
 	else:
 		look_at(player.global_position)
@@ -75,7 +78,17 @@ func resume():
 	tween_resume = create_tween()
 	tween_resume.tween_method(func(value: bool): can_move = value, false, true, 1)
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_T):
-		EventBus.enemy_died.emit()
-		queue_free()
+func animate_damage():
+	nav_agent.avoidance_enabled = true
+	spinning = false
+	rotation = 0
+	can_move = false
+
+	if tween:
+			tween.kill()
+		
+	tween = create_tween()
+	tween.tween_property(visual, "visible", false, 0.1)
+	tween.chain().tween_property(visual, "visible", true, 0.1)
+	tween.set_loops(5)
+	tween.finished.connect(func(): can_move = true)

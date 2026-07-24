@@ -9,6 +9,7 @@ class_name Beetle
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
 
+@onready var visual: Sprite2D = $Visual
 @onready var visual_dashing: Sprite2D = $VisualDashing
 @onready var shadow_dashing: Sprite2D = $ShadowDashing
 
@@ -18,6 +19,8 @@ var movement_delta: float
 var can_move: bool = true
 
 var tween_resume: Tween
+
+var tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -73,7 +76,18 @@ func resume():
 	tween_resume = create_tween()
 	tween_resume.tween_method(func(value: bool): can_move = value, false, true, 1)
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_T):
-		EventBus.enemy_died.emit()
-		queue_free()
+func animate_damage():
+	nav_agent.avoidance_enabled = true
+	visual_dashing.visible = false
+	shadow_dashing.visible = false
+
+	can_move = false
+
+	if tween:
+			tween.kill()
+		
+	tween = create_tween()
+	tween.tween_property(visual, "visible", false, 0.1)
+	tween.chain().tween_property(visual, "visible", true, 0.1)
+	tween.set_loops(5)
+	tween.finished.connect(func(): can_move = true)

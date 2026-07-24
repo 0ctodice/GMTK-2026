@@ -19,6 +19,7 @@ var movement_delta: float
 var can_move: bool = true
 
 var tween_resume: Tween
+var tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,7 +76,15 @@ func resume():
 	tween_resume = create_tween()
 	tween_resume.tween_method(func(value: bool): can_move = value, false, true, 1)
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_T):
-		EventBus.enemy_died.emit()
-		queue_free()
+func animate_damage():
+	can_move = false
+	if tween:
+			tween.kill()
+		
+	tween = create_tween()
+	tween.tween_property(visual_atk, "visible", false, 0.1)
+	tween.parallel().tween_property(bandage_visual_atk, "visible", false, 0.1)
+	tween.chain().tween_property(visual_atk, "visible", true, 0.1)
+	tween.parallel().tween_property(bandage_visual_atk, "visible", true, 0.1)
+	tween.set_loops(5)
+	tween.finished.connect(func(): can_move = true)

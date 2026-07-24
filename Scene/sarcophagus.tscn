@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ckgh0pnjxniqy" path="res://Script/sarcophagus.gd" id="1_24du3"]
 [ext_resource type="Texture2D" uid="uid://bn854st3ap2a7" path="res://Asset/sarcophagus.png" id="2_24du3"]
+[ext_resource type="Script" uid="uid://s0n1wtgfa8qx" path="res://Script/enemy_hurt_box.gd" id="3_fig3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
 size = Vector2(18, 36)
@@ -70,3 +71,12 @@ region_rect = Rect2(40, 0, 24, 48)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bandage" unique_id=2128239408]
 polygon = PackedVector2Array(10, -8, -9, -8, -9, -6, -2, 0, -1.3266792, 3.366602, 0, 10, 6, 16, 10, 18)
 disabled = true
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1917946023]
+collision_layer = 8
+collision_mask = 32
+script = ExtResource("3_fig3s")
+LIFE_POINTS = 75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1603815632]
+shape = SubResource("RectangleShape2D_eae6q")
