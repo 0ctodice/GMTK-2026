@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cwo5kclr6quic"]
+
+[ext_resource type="PackedScene" uid="uid://b537gdmey7d73" path="res://Scene/slot_display.tscn" id="1_lx344"]
+[ext_resource type="Script" uid="uid://nt4i7r8330x2" path="res://Script/shop_display.gd" id="1_nnk2j"]
+
+[node name="ShopDisplay" type="GridContainer" unique_id=1692932495]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+script = ExtResource("1_nnk2j")
+
+[node name="SlotDisplay" parent="." unique_id=1509815111 instance=ExtResource("1_lx344")]
+layout_mode = 2
+
+[node name="SlotDisplay2" parent="." unique_id=428557983 instance=ExtResource("1_lx344")]
+layout_mode = 2
+
+[node name="SlotDisplay3" parent="." unique_id=1060141750 instance=ExtResource("1_lx344")]
+layout_mode = 2
+
+[node name="SlotDisplay4" parent="." unique_id=687158685 instance=ExtResource("1_lx344")]
+layout_mode = 2
+
+[node name="SlotDisplay5" parent="." unique_id=299914028 instance=ExtResource("1_lx344")]
+layout_mode = 2
+
+[node name="SlotDisplay6" parent="." unique_id=1149904158 instance=ExtResource("1_lx344")]
+layout_mode = 2

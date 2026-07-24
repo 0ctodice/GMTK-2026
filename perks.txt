@@ -1,0 +1,5 @@
+
+
+Types de perks : Contact | distance | Zone | No Damage
+
+Perk 1

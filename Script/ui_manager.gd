@@ -33,6 +33,7 @@ const DOORS = [
 	"REACHING THE ENTERNAL FIEDS",
 	"FINAL ASCENSION"
 ]
+
 var tween: Tween
 var state: STATES = STATES.ENTERING_DOOR
 var strive_remaining: int = 6
@@ -57,7 +58,7 @@ func _ready():
 	retry.disabled = true
 	retry.modulate = Color.TRANSPARENT
 
-	transition_entering_door()
+	# transition_entering_door()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

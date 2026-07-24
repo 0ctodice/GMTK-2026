@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bide1e531aent" path="res://Script/scorpio.gd" id="1_1s047"]
 [ext_resource type="Texture2D" uid="uid://b4ojtlvdoffjc" path="res://Asset/scorpio.png" id="2_1s047"]
-[ext_resource type="Script" uid="uid://s0n1wtgfa8qx" path="res://SCript/enemy_hurt_box.gd" id="3_ei5ax"]
+[ext_resource type="Script" uid="uid://s0n1wtgfa8qx" path="res://Script/enemy_hurt_box.gd" id="3_ei5ax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
 size = Vector2(16.5, 10)

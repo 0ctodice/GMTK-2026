@@ -48,7 +48,5 @@ Fiche technique des perks :
 - Nom
 - Description
 - Visuel
-- FX
-- function "action"
-- Timer
+- Scene
 - Cooldown

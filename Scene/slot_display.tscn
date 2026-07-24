@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b537gdmey7d73"]
+
+[ext_resource type="Script" uid="uid://byrvgiopj8wkn" path="res://Script/slot_display.gd" id="1_dxwt7"]
+[ext_resource type="Texture2D" uid="uid://do8y75vrr6pob" path="res://Asset/no_perk.png" id="2_5gtdk"]
+
+[node name="SlotDisplay" type="CenterContainer" unique_id=1509815111]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dxwt7")
+
+[node name="ItemTextureRect" type="TextureRect" parent="." unique_id=1834011049]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("2_5gtdk")
+stretch_mode = 3
