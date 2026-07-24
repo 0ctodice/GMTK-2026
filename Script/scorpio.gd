@@ -1,9 +1,13 @@
 extends RigidBody2D
-class_name Enemy
+class_name Scorpio
 
 @export var SPEED: float = 100.0
+@export var SPIN_SPEED: float = 100.0
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+
+@onready var spin_timer: Timer = $SpinTimer
+@onready var spin_cooldown: Timer = $SpinCooldown
 
 var player: Player
 var last_direction: Vector2 = Vector2.ZERO
@@ -12,12 +16,28 @@ var can_move: bool = true
 
 var tween_resume: Tween
 
+var spinning: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	EventBus.player_died.connect(func(): can_move = false)
 	EventBus.player_revived.connect(resume)
+	spin_cooldown.timeout.connect(func():
+		spin_cooldown.stop()
+		nav_agent.avoidance_enabled = false
+		spinning = true
+		spin_timer.start()
+	)
+	spin_timer.timeout.connect(func():
+		spin_timer.stop()
+		nav_agent.avoidance_enabled = true
+		spinning = false
+		rotation = 0
+		spin_cooldown.start(randf_range(1, 5))
+	)
+	spin_cooldown.start(randf_range(1, 5))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,6 +56,11 @@ func _process(delta):
 		_on_velocity_computed(new_velocity)
 
 	last_direction = new_velocity.normalized()
+
+	if spinning:
+		rotation += SPIN_SPEED * delta
+	else:
+		look_at(player.global_position)
 
 
 func get_last_direction(): return last_direction

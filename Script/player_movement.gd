@@ -69,11 +69,18 @@ func _input(_event):
 
 func _on_hurt_box_body_entered(body: Node2D):
 	if can_take_damage:
-		var enemy_direction = (body as Enemy).get_last_direction()
+		var enemy_direction = body.get_last_direction()
 		var handle_damage = func(): take_damage(enemy_direction)
 		can_take_damage = false
 		handle_damage.call_deferred()
 
+func _on_hurt_box_area_entered(area: Area2D):
+	if can_take_damage:
+		var enemy_direction = area.get_parent().get_last_direction()
+		var handle_damage = func(): take_damage(enemy_direction)
+		can_take_damage = false
+		handle_damage.call_deferred()
+	
 func take_damage(bounce_direction: Vector2):
 	hurt_box_collision_shape.disabled = true
 	velocity = bounce_direction * SPEED * DASH_FACTOR / 2

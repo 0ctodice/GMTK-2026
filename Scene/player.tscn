@@ -28,7 +28,7 @@ gravity = Vector2(0, 0)
 scale_amount_curve = SubResource("Curve_y8w33")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1926584562]
-position = Vector2(2, 2)
+position = Vector2(0, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_xa75v")
 region_enabled = true
@@ -44,7 +44,7 @@ region_rect = Rect2(0, 0, 36, 32)
 shape = SubResource("RectangleShape2D_y8w33")
 
 [node name="DashingTime" type="Timer" parent="." unique_id=199409826]
-wait_time = 0.2
+wait_time = 0.3
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=2144589793]
 
@@ -55,5 +55,6 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1562252644]
 shape = SubResource("RectangleShape2D_eae6q")
 
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]

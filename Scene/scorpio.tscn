@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c56alq2yk8ftu"]
+
+[ext_resource type="Script" uid="uid://bide1e531aent" path="res://Script/scorpio.gd" id="1_1s047"]
+[ext_resource type="Texture2D" uid="uid://b4ojtlvdoffjc" path="res://Asset/scorpio.png" id="2_1s047"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
+size = Vector2(17, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eae6q"]
+radius = 3.6055517
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1s047"]
+radius = 2.8284276
+
+[node name="Scorpio" type="RigidBody2D" unique_id=374939552]
+collision_layer = 8
+gravity_scale = 0.0
+script = ExtResource("1_1s047")
+SPEED = 50.0
+SPIN_SPEED = 25.0
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=213697029]
+position = Vector2(0, 1)
+rotation = 1.5707964
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_1s047")
+region_enabled = true
+region_rect = Rect2(48, 0, 48, 80)
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=964964986]
+rotation = 1.5707964
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_1s047")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420821795]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_eae6q")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=900112541]
+path_desired_distance = 16.0
+target_desired_distance = 16.0
+avoidance_enabled = true
+
+[node name="SpinTimer" type="Timer" parent="." unique_id=279290356]
+
+[node name="SpinCooldown" type="Timer" parent="." unique_id=2035818275]
+
+[node name="Stinger" type="Area2D" parent="." unique_id=1981777816]
+rotation = -0.7599618
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stinger" unique_id=1480125244]
+position = Vector2(-8.009455, -8.991588)
+shape = SubResource("CircleShape2D_eae6q")
+
+[node name="Claw1" type="Area2D" parent="." unique_id=872762960]
+rotation = -0.7599618
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Claw1" unique_id=1909713602]
+position = Vector2(12.1428175, 4.642413)
+shape = SubResource("CircleShape2D_1s047")
+
+[node name="Claw2" type="Area2D" parent="." unique_id=1287417968]
+rotation = -0.7599618
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Claw2" unique_id=962164700]
+position = Vector2(4.5649853, 12.6159)
+shape = SubResource("CircleShape2D_1s047")

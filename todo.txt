@@ -24,7 +24,7 @@
 - Gestion des niveau (12 niveaux correspondant aux livre des portes Mythologie egyptienne)
     - Animation de la porte pour le changement de level : DONE
     - Faire l'écran de nouveaux niveaux
-    
+
 - shop
     - Choix aléatoire des perks
     - Gestion du roaster
@@ -35,6 +35,12 @@
     - Ecran de mort total : DONE
 
 2. Visuel :
+
+- joueur
+- 3 monstres :
+    - beetle
+    - serpent
+    - 
 
 3. Sound Design :
 

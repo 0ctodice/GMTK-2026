@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://hfohyucspmmc"]
+
+[ext_resource type="Script" uid="uid://ckgh0pnjxniqy" path="res://Script/sarcophagus.gd" id="1_24du3"]
+[ext_resource type="Texture2D" uid="uid://bn854st3ap2a7" path="res://Asset/sarcophagus.png" id="2_24du3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
+size = Vector2(18, 36)
+
+[node name="BaseEnemy" type="RigidBody2D" unique_id=374939552]
+collision_layer = 8
+gravity_scale = 0.0
+script = ExtResource("1_24du3")
+SPEED = 25.0
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=213697029]
+position = Vector2(0, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_24du3")
+region_enabled = true
+region_rect = Rect2(0, 48, 32, 48)
+
+[node name="ShadowAtk" type="Sprite2D" parent="." unique_id=1270956184]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_24du3")
+region_enabled = true
+region_rect = Rect2(64, 48, 32, 48)
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=56842384]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_24du3")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 48)
+
+[node name="VisualAtk" type="Sprite2D" parent="." unique_id=937698616]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_24du3")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420821795]
+shape = SubResource("RectangleShape2D_eae6q")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=900112541]
+path_desired_distance = 16.0
+target_desired_distance = 16.0
+avoidance_enabled = true
+
+[node name="Bandage" type="Area2D" parent="." unique_id=687041405]
+position = Vector2(-19, 0)
+collision_layer = 8
+
+[node name="ShadowAtk" type="Sprite2D" parent="Bandage" unique_id=1662157123]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_24du3")
+region_enabled = true
+region_rect = Rect2(40, 48, 24, 48)
+
+[node name="VisualAtk" type="Sprite2D" parent="Bandage" unique_id=1551839780]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_24du3")
+region_enabled = true
+region_rect = Rect2(40, 0, 24, 48)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bandage" unique_id=2128239408]
+polygon = PackedVector2Array(10, -8, -9, -8, -9, -6, -2, 0, -1.3266792, 3.366602, 0, 10, 6, 16, 10, 18)
+disabled = true

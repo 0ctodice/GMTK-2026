@@ -47,9 +47,9 @@ func _create_spawners():
 			
 			var spawn_instance = spawn_scene.instantiate()
 			spawn_instance.global_position = Vector2(rand_x, rand_y)
-			var spawn_number = randi_range(1, 3 + floor(current_level / 2.0))
-			total_enemies_alive += spawn_number
-			(spawn_instance as Spawn).set_spawn_number(spawn_number)
+			var enemies_number = randi_range(1, 3 + floor(current_level / 2.0))
+			total_enemies_alive += enemies_number
+			(spawn_instance as Spawn).set_spawn_number(enemies_number, current_level)
 			add_child(spawn_instance)
 
 		total_spawners += spawner_number
@@ -67,4 +67,4 @@ func _on_enemy_died():
 func set_level():
 	total_spawners = 0
 	finished_spawning = false
-	max_spawners_number = randi_range(5 + floor(current_level / 2.0), 5 + current_level)
+	max_spawners_number = randi_range(5 + ceil(current_level / 2.0), 5 + current_level)

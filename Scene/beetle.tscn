@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dsmu35afx4jdi"]
+
+[ext_resource type="Script" uid="uid://phqcs2nf2uk3" path="res://Script/beetle.gd" id="1_vyyyo"]
+[ext_resource type="Texture2D" uid="uid://cqjmuyo274tjj" path="res://Asset/beetle.png" id="2_u4wqp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
+size = Vector2(16, 16)
+
+[node name="Beetle" type="RigidBody2D" unique_id=374939552]
+collision_layer = 8
+gravity_scale = 0.0
+script = ExtResource("1_vyyyo")
+DASH_FACTOR = 2.5
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=213697029]
+position = Vector2(0, 1)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_u4wqp")
+region_enabled = true
+region_rect = Rect2(48, 32, 32, 32)
+
+[node name="ShadowDashing" type="Sprite2D" parent="." unique_id=743113432]
+visible = false
+position = Vector2(0, 1)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_u4wqp")
+region_enabled = true
+region_rect = Rect2(0, 32, 48, 32)
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=964964986]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_u4wqp")
+region_enabled = true
+region_rect = Rect2(48, 0, 32, 32)
+
+[node name="VisualDashing" type="Sprite2D" parent="." unique_id=2046701521]
+visible = false
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_u4wqp")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420821795]
+shape = SubResource("RectangleShape2D_eae6q")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=900112541]
+path_desired_distance = 16.0
+target_desired_distance = 16.0
+avoidance_enabled = true
+
+[node name="DashTimer" type="Timer" parent="." unique_id=279290356]
+wait_time = 0.5
+
+[node name="DashCooldown" type="Timer" parent="." unique_id=2035818275]

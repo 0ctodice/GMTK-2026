@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://q0ny5culue5d"]
 
-[ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://icon.svg" id="1_5vypo"]
 [ext_resource type="Script" uid="uid://cc01gvp0s0apd" path="res://Script/spawn.gd" id="1_cbgb2"]
-[ext_resource type="PackedScene" uid="uid://hfohyucspmmc" path="res://Scene/base_enemy.tscn" id="2_2eiye"]
+[ext_resource type="PackedScene" uid="uid://dsmu35afx4jdi" path="res://Scene/beetle.tscn" id="2_2eiye"]
+[ext_resource type="Texture2D" uid="uid://chu2tkmix4y3q" path="res://Asset/spawn.png" id="3_2eiye"]
+[ext_resource type="PackedScene" uid="uid://c56alq2yk8ftu" path="res://Scene/scorpio.tscn" id="3_q6bst"]
+[ext_resource type="PackedScene" uid="uid://hfohyucspmmc" path="res://Scene/sarcophagus.tscn" id="4_n75rr"]
 
 [node name="Spawn" type="Node2D" unique_id=820037076]
 script = ExtResource("1_cbgb2")
-enemy_scene = ExtResource("2_2eiye")
+enemy_scenes = Array[PackedScene]([ExtResource("4_n75rr"), ExtResource("3_q6bst"), ExtResource("2_2eiye")])
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=779914536]
+position = Vector2(0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2eiye")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 48)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1617440005]
-modulate = Color(0, 1, 0, 1)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("1_5vypo")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2eiye")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 48)
